@@ -14,7 +14,7 @@ public class SteamFind {
     public static void main(String[] args) {
         Stream<Integer> stream = Arrays.stream(new Integer[]{1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1});
 
-        // 获取任一元素findAny
+        /* 获取任一元素findAny */
         Optional<Integer> any = stream.filter(integer -> integer % 2 == 0).findAny();
         System.out.println(any.orElse(-1));
 
@@ -22,7 +22,7 @@ public class SteamFind {
         System.out.println(result);
 
         stream = Arrays.stream(new Integer[]{1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1});
-        // 获取第一个元素findFirst
+        /* 获取第一个元素findFirst */
         Optional<Integer> first = stream.filter(integer -> integer % 2 == 0).findFirst();
         first.ifPresent(System.out::println);
 
