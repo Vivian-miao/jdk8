@@ -1,10 +1,8 @@
 package com.foundation;
 
-import java.util.Collections;
-import java.util.Hashtable;
-import java.util.LinkedHashSet;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static com.foundation.CollectorsAction.dishes;
@@ -40,6 +38,8 @@ public class CollectorsAction4 {
         toMapBinaryOperator();
         System.out.println("----------");
         toMapBinaryOperatorAndSupplier();
+        System.out.println("----------");
+        listToMap();
         System.out.println("----------");
     }
 
@@ -155,6 +155,23 @@ public class CollectorsAction4 {
                     System.out.println(map);
                     System.out.println(map.getClass());
                 });
+    }
+
+    private static void listToMap() {
+        /*针对重复key的，覆盖之前的value；value为空，直接存放，不调用map.merge */
+        HashMap<String, Integer> dishesMap = dishes.stream().collect(Collector.of(HashMap::new, (map, dish) -> map.put(dish.getName(), dish.getCalories()), (key, value) -> value, Collector.Characteristics.IDENTITY_FINISH));
+        Map<String, Integer> dishMap = dishes.stream().collect(Collectors.toMap(Dish::getName, Dish::getCalories));
+        for (Map.Entry<String, Integer> entry : dishMap.entrySet()) {
+            System.out.println(entry);
+            if ("chicken".equals(entry.getKey())) {
+                System.out.println(entry.getValue());
+            }
+        }
+        for (String key : dishesMap.keySet()) {
+            if ("pizza".equals(key)) {
+                System.out.println(dishesMap.get(key));
+            }
+        }
     }
 
 }
