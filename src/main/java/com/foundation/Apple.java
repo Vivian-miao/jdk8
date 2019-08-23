@@ -12,11 +12,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Apple {
+class Apple {
     private String color;
     private long weight;
 
-    public Apple(String color, long weight) {
+    Apple(String color, long weight) {
         this.color = color;
         this.weight = weight;
     }

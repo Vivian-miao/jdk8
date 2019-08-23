@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class Company {
+class Company {
     private String name;
     private List<Employee> employees;
 }

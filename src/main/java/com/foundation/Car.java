@@ -12,6 +12,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Car {
+class Car {
     private Insurance insurance;
 }
