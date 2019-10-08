@@ -41,6 +41,7 @@ public class CollectorsAction4 {
         System.out.println("----------");
         listToMap();
         System.out.println("----------");
+        lowCaloricDishesName();
     }
 
     /**
@@ -172,6 +173,14 @@ public class CollectorsAction4 {
                 System.out.println(dishesMap.get(key));
             }
         }
+    }
+
+    private static void lowCaloricDishesName() {
+        Optional.of(dishes.parallelStream().filter(dish -> dish.getCalories() > 400)
+                .sorted(Comparator.comparing(Dish::getCalories))
+                .map(Dish::getName)
+                .collect(Collectors.toList()))
+                .ifPresent(System.out::println);
     }
 
 }

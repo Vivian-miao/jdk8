@@ -88,8 +88,8 @@ public class CollectorAction {
      * 姓名拼接
      */
     private static void joinName(List<Student> students) {
-        Optional.ofNullable(students.stream().map(Student::getName).collect(joining(", "))).ifPresent(System.out::println);
-        Optional.ofNullable(students.stream().map(Student::getName).collect(joining(", ", "[", "]"))).ifPresent(System.out::println);
+        Optional.of(students.stream().map(Student::getName).collect(joining(", "))).ifPresent(System.out::println);
+        Optional.of(students.stream().map(Student::getName).collect(joining(", ", "[", "]"))).ifPresent(System.out::println);
     }
 
     /**
